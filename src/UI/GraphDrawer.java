@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
 public class GraphDrawer extends JPanel {
     private final Graph graph;
@@ -57,7 +59,7 @@ public class GraphDrawer extends JPanel {
         for (Node node : graph.getVertices()) {
             int nodeX = node.getX();
             int nodeY = node.getY();
-            if (x >= nodeX - 10 && x <= nodeX + 10 && y >= nodeY - 10 && y <= nodeY + 10) {
+            if (x >= nodeX - 10 && x <= nodeX + 55 && y >= nodeY - 10 && y <= nodeY + 55) {
                 return node;
             }
         }
@@ -69,26 +71,69 @@ public class GraphDrawer extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        // Matriz de adjacência utilizada para gerar o grafo
+        int[][] adjacencyMatrix = {
+                { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
+                { 4, 0, 8, 0, 0, 0, 0, 5, 0 },
+                { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
+                { 0, 0, 7, 0, 9, 6, 0, 0, 0 },
+                { 0, 0, 0, 9, 0, 1, 0, 0, 0 },
+                { 0, 0, 4, 6, 1, 0, 2, 0, 0 },
+                { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
+                { 8, 5, 0, 0, 0, 0, 1, 0, 7 },
+                { 0, 0, 2, 0, 0, 0, 6, 7, 0 }
+        };
+
+        // Para cada vértice, retorna a sua posição, e a posição de cada vértice que tem uma conexão com ele
+        for (Node node : graph.getVertices()) {
+            int startX = node.getX() + 15;
+            int startY = node.getY() + 15;
+
+            int i = Integer.parseInt(node.getId()) - 1;
+
+            for (Node connectedNode : graph.getConnectedNodes(node)) {
+                int endX = connectedNode.getX() + 15;
+                int endY = connectedNode.getY() + 15;
+
+                int j = Integer.parseInt(connectedNode.getId()) - 1;
+
+                // Desenha uma linha que vai da posição do primeiro vértice até o vértice que ele possui conexão
+                g.drawLine(startX, startY, endX, endY);
+
+                File file1 = new File("res/fonts/Monaco.ttf");
+
+                try {
+                    Font font1 = Font.createFont(Font.TRUETYPE_FONT, file1).deriveFont(25F);
+                    g.setFont(font1);
+                } catch (FontFormatException | IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                g.drawString(String.valueOf(adjacencyMatrix[i][j]), ((startX + endX) / 2), ((startY + endY) / 2));
+            }
+        }
+
         // Para cada vértice, retorna sua posição e desenha um círculo com sua ID no meio
         for (Node node : graph.getVertices()) {
             int x = node.getX();
             int y = node.getY();
-            g.drawOval(x - 10, y - 10, 20, 20);
-            g.drawString(node.getId(), x - 5, y + 5);
-        }
 
-        // Para cada vértice, retorna a sua posição, e a posição de cada vértice que tem uma conexão com ele
-        for (Node node : graph.getVertices()) {
-            int startX = node.getX();
-            int startY = node.getY();
+            g.setColor(Color.RED);
+            g.fillOval(x - 12, y - 12, 54, 54);
+            g.setColor(Color.BLACK);
+            g.fillOval(x - 10, y - 10, 50, 50);
 
-            for (Node connectedNode : graph.getConnectedNodes(node)) {
-                int endX = connectedNode.getX();
-                int endY = connectedNode.getY();
+            File file = new File("res/fonts/Pacifico-Regular.ttf");
 
-                // Desenha uma linha que vai da posição do primeiro vértice até o vértice que ele possui conexão
-                g.drawLine(startX, startY, endX, endY);
+            try {
+                Font font = Font.createFont(Font.TRUETYPE_FONT, file).deriveFont(30F);
+                g.setFont(font);
+            } catch (FontFormatException | IOException e) {
+                throw new RuntimeException(e);
             }
+
+            g.setColor(Color.WHITE);
+            g.drawString(node.getId(), x + 6, y + 24);
         }
     }
 }

@@ -8,8 +8,8 @@ import javax.swing.*;
 public class GraphCreator extends JFrame {
 
     // Altura e largura da janela
-    private static final int WINDOW_WIDTH = 1600;
-    private static final int WINDOW_HEIGHT = 900;
+    private static final int WINDOW_WIDTH = 1920;
+    private static final int WINDOW_HEIGHT = 1080;
 
     public GraphCreator() {
         // Criação de um grafo
@@ -47,8 +47,8 @@ public class GraphCreator extends JFrame {
         for (int i = 0; i < numVertices; i++) {
             // Inicializa valores aleatórios para a posição x e y de cada vértice
             // e atribui o "nome" do vértice como sua posição "i" e atribui as posições
-            int x = (int) (Math.random() * (WINDOW_WIDTH - 40)) + 20;
-            int y = (int) (Math.random() * (WINDOW_HEIGHT - 40)) + 20;
+            int x = (int) (Math.random() * (WINDOW_WIDTH - 100));
+            int y = (int) (Math.random() * (WINDOW_HEIGHT - 100));
             Node node = new Node(String.valueOf(i+1), x, y);
             graph.addNode(node);
         }
@@ -67,7 +67,7 @@ public class GraphCreator extends JFrame {
                             .findFirst()
                             .orElse(null);
 
-                    int id2 = j+1;
+                    int id2 = j + 1;
 
                     Node node2 = graph.getVertices().stream()
                             .filter(n -> n.getId().equals(String.valueOf(id2)))
