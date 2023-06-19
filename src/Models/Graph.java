@@ -18,12 +18,12 @@ public class Graph {
 
     // Retorna a lista de conexões de um vértice, adiciona o outro vértice
     // que faz conexão com ele nessa lista
-    public void addEdge(Node node1, Node node2) {
+    public void addConnection(Node node1, Node node2) {
         connectionsList.get(node1).add(node2);
     }
 
     // Função para remover a conexão de um vértice com outro
-    public void removeEdge(Node node1, Node node2) {
+    public void removeConnection(Node node1, Node node2) {
         connectionsList.get(node1).remove(node2);
     }
 
@@ -31,7 +31,7 @@ public class Graph {
         return connectionsList.get(node);
     }
 
-    public Set<Node> getVertices() {
+    public Set<Node> getNodes() {
         return connectionsList.keySet();
     }
     
