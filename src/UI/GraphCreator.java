@@ -12,20 +12,18 @@ public class GraphCreator extends JFrame {
     // caso queira rodar com uma matriz específica
 
     /* public static final int[][] ADJACENCY_MATRIX = {
-            { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
-            { 4, 0, 8, 0, 0, 0, 0, 5, 0 },
-            { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
-            { 0, 0, 7, 0, 9, 6, 0, 0, 0 },
-            { 0, 0, 0, 9, 0, 1, 0, 0, 0 },
-            { 0, 0, 4, 6, 1, 0, 2, 0, 0 },
-            { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
-            { 8, 5, 0, 0, 0, 0, 1, 0, 7 },
-            { 0, 0, 2, 0, 0, 0, 6, 7, 0 }
+            { 0, 0, 3, 0, 0, 2, 0 },
+            { 0, 0, 0, 1, 2, 6, 2 },
+            { 3, 0, 0, 4, 1, 2, 0 },
+            { 0, 1, 4, 0, 0, 0, 0 },
+            { 0, 2, 1, 0, 0, 3, 0 },
+            { 2, 6, 2, 0, 3, 0, 5 },
+            { 0, 2, 0, 0, 0, 5, 0 },
     }; */
 
-    private static final int WINDOW_WIDTH = 1920;
-    private static final int WINDOW_HEIGHT = 1080;
-    private static final int VERTICES = 4; // com 15 vértices já começa a lagar um pouco dependendo da quantidade de conexões
+    private static final int WINDOW_WIDTH = 1600;
+    private static final int WINDOW_HEIGHT = 900;
+    private static final int VERTICES = 6; // com 15 vértices já começa a lagar um pouco dependendo da quantidade de conexões
     private static final int MAX_WEIGHT = 10;
     private static final int ZERO_PROBABILITY = 30;
     public static final int[][] ADJACENCY_MATRIX = MatrixGenerator.generateRandomGraph(VERTICES, MAX_WEIGHT, ZERO_PROBABILITY);
