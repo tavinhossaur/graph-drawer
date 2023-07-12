@@ -22,24 +22,11 @@ public class Graph {
         connectionsList.get(node1).add(node2);
     }
 
-    // Função para remover a conexão de um vértice com outro
-    public void removeConnection(Node node1, Node node2) {
-        connectionsList.get(node1).remove(node2);
-    }
-
     public List<Node> getConnectedNodes(Node node) {
         return connectionsList.get(node);
     }
 
     public Set<Node> getNodes() {
         return connectionsList.keySet();
-    }
-    
-    public boolean isEmpty() {
-        return connectionsList.isEmpty();
-    }
-
-    public int size() {
-        return connectionsList.size();
     }
 }
