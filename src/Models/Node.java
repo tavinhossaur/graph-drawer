@@ -12,11 +12,17 @@ public class Node {
         this.y = y;
     }
 
-    public String getId() { return id; }
+    public String getId() {
+        return id;
+    }
 
-    public int getX() { return x; }
+    public int getX() {
+        return x;
+    }
 
-    public int getY() { return y; }
+    public int getY() {
+        return y;
+    }
 
     public void setPosition(int x, int y) {
         this.x = x;

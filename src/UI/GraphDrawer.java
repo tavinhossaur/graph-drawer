@@ -2,6 +2,7 @@ package UI;
 
 import Models.Graph;
 import Models.Node;
+import Utils.DijkstraAlgorithm;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,6 +54,7 @@ public class GraphDrawer extends JPanel {
                 }
             }
         });
+        createButton();
     }
 
     // Procura qual vértice se encontra nas posições x e y do quadro
@@ -137,5 +139,12 @@ public class GraphDrawer extends JPanel {
 
             g.drawString(node.getId(), x, y + 24);
         }
+    }
+
+    public void createButton(){
+        JButton btn = new JButton("Execute Dijkstra");
+        btn.setBounds(10, 10, 150, 30);
+        btn.addActionListener(e -> DijkstraAlgorithm.runDijkstra());
+        add(btn, BorderLayout.SOUTH);
     }
 }

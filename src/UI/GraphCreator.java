@@ -23,9 +23,9 @@ public class GraphCreator extends JFrame {
 
     private static final int WINDOW_WIDTH = 1600;
     private static final int WINDOW_HEIGHT = 900;
-    private static final int VERTICES = 6; // com 15 vértices já começa a lagar um pouco dependendo da quantidade de conexões
+    private static final int VERTICES = 6;
     private static final int MAX_WEIGHT = 10;
-    private static final int ZERO_PROBABILITY = 30;
+    private static final int ZERO_PROBABILITY = 60;
     public static final int[][] ADJACENCY_MATRIX = MatrixGenerator.generateRandomGraph(VERTICES, MAX_WEIGHT, ZERO_PROBABILITY);
 
     public GraphCreator() {
