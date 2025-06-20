@@ -12,5 +12,3 @@ This is a project for a better understanding of graphs and how they can be repre
 ## Screenshot
 
 ![image](https://github.com/tavinhossaur/graph-drawer/assets/64261696/fddeb303-d6a0-4294-a87b-d043b2995540)
-
-I plan to further improve the code to make it capable of showing graphing algorithms like Dijkstra working in real time.
